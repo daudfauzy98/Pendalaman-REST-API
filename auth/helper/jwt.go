@@ -27,7 +27,7 @@ func CreateToken(role int, idUser string) (error, *database.TokenDetails) {
 	// Token details initilization
 	td := &database.TokenDetails{}
 	// Set waktu access token expired
-	td.AtExpires = time.Now().Add(time.Minute * 15).Unix()
+	td.AtExpires = time.Now().Add(time.Second * 10).Unix()
 	// Set waktu refresh token expired
 	td.RtExpires = time.Now().Add(time.Hour).Unix()
 

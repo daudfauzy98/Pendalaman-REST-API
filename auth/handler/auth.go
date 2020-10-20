@@ -30,6 +30,7 @@ func (db *Auth) ValidateAuth(w http.ResponseWriter, r *http.Request) {
 		utils.WrapAPIError(w, r, err.Error(), http.StatusUnauthorized)
 		return
 	}
+	log.Println(idUser)
 
 	utils.WrapAPIData(w, r, database.Auth{
 		Username: idUser,
@@ -39,7 +40,7 @@ func (db *Auth) ValidateAuth(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
-func (db *Auth) RefreshToken(w http.ResponseWriter, r *http.Request) {
+func RefreshToken(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		utils.WrapAPIError(w, r, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 		return
